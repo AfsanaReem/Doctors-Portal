@@ -1,6 +1,7 @@
 import React from 'react';
 import chair from '../assets/images/chair.png';
 import background from '../assets/images/bg.png';
+import Cards from './BannerCard/Cards';
 const Banner = () => {
     return (
         <div>
@@ -9,11 +10,13 @@ const Banner = () => {
                     <img alt='chair' src={chair} className="w-1/2 rounded-lg shadow-2xl" />
                     <div>
                         <h1 className="text-5xl font-bold">Your New Smile Starts Here</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                        <p className="py-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet iure sunt aperiam culpa est? Labore amet itaque debitis dolorum esse?</p>
                         <button className="btn bg-gradient-to-r from-primary to-secondary text-white">Get Started</button>
                     </div>
                 </div>
+
             </div>
+            <Cards></Cards>
         </div>
     );
 };

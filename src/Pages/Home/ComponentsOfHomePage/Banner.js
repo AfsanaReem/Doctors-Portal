@@ -14,7 +14,6 @@ const Banner = () => {
                         <button className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white">Get Started</button>
                     </div>
                 </div>
-
             </div>
             <Cards></Cards>
         </div>

@@ -1,8 +1,11 @@
 import React from 'react';
-
+import bg from '../assets/images/footer.png';
 const Footer = () => {
     return (
-        <div>
+        <div style={{
+            backgroundImage: `url(${bg})`,
+            backgroundSize: 'cover'
+        }}>
             <footer className="footer p-10">
                 <div>
                     <span className="footer-title">Services</span>

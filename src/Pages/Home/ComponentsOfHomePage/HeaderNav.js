@@ -4,7 +4,7 @@ const HeaderNav = () => {
     const menu = <React.Fragment>
         <li><a href='/'>Home</a></li>
         <li><a href='/'>About</a></li>
-        <li><a href='/'>Appointment</a></li>
+        <li><a href='/appointment'>Appointment</a></li>
         <li><a href='/'>Reviews</a></li>
         <li><a href='/'>Contact Us</a></li>
         <li><a href='/login'>Login</a></li>

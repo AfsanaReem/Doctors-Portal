@@ -10,7 +10,7 @@ const Cards = () => {
             name: "Opening Hours",
             details: "Open from 9am to 5pm",
             icon: icon1,
-            bgClass: 'bg-primary'
+            bgClass: 'bg-gradient-to-r from-primary to-secondary'
         },
         {
             id: 2,
@@ -24,7 +24,7 @@ const Cards = () => {
             name: "Contact Us",
             details: "Open from 9am to 5pm",
             icon: icon3,
-            bgClass: 'bg-primary'
+            bgClass: 'bg-gradient-to-r from-primary to-secondary'
         },
     ]
     return (

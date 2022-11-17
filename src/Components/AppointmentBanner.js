@@ -3,7 +3,7 @@ import img from '../assets/images/doctor.png';
 import background from '../assets/images/appointment.png';
 const AppointmentBanner = () => {
     return (
-        <div className='md:mx-20 mt-32' style={{ backgroundImage: `url(${background})` }}>
+        <div className='mt-32' style={{ backgroundImage: `url(${background})` }}>
             <div className="hero text-white">
                 <div className="hero-content flex-col lg:flex-row">
                     <img alt='' src={img} className="md:max-w-sm rounded-lg shadow-2xl -mt-24 hidden md:block" />

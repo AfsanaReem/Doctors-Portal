@@ -1,18 +1,19 @@
 import React from 'react';
-import AppointmentBanner from '../Components/AppointmentBanner';
-import Banner from '../Components/Banner';
-import ServiceBanner from '../Components/ServiceBanner';
-import Services from '../Components/ServiceCard/Services';
-import Testimonial from '../Components/Review/Testimonial';
-import ContactUs from '../Components/ContactUs';
+import Banner from './ComponentsOfHomePage/Banner';
+import ContactUs from './ComponentsOfHomePage/ContactUs';
+import HomeAppointmentBanner from './ComponentsOfHomePage/HomeAppointmentBanner';
+import Testimonial from './ComponentsOfHomePage/Review/Testimonial';
+import ServiceBanner from './ComponentsOfHomePage/ServiceBanner';
+import Services from './ComponentsOfHomePage/ServiceCard/Services';
+
 
 const Home = () => {
     return (
         <div>
-            <Banner />
+            <Banner></Banner>
             <Services></Services>
             <ServiceBanner></ServiceBanner>
-            <AppointmentBanner></AppointmentBanner>
+            <HomeAppointmentBanner></HomeAppointmentBanner>
             <Testimonial></Testimonial>
             <ContactUs></ContactUs>
         </div>

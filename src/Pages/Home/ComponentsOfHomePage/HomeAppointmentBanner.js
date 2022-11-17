@@ -1,7 +1,7 @@
 import React from 'react';
-import img from '../assets/images/doctor.png';
-import background from '../assets/images/appointment.png';
-const AppointmentBanner = () => {
+import img from '../../../assets/images/doctor.png';
+import background from '../../../assets/images/appointment.png';
+const HomeAppointmentBanner = () => {
     return (
         <div className='mt-32' style={{ backgroundImage: `url(${background})` }}>
             <div className="hero text-white">
@@ -19,4 +19,4 @@ const AppointmentBanner = () => {
     );
 };
 
-export default AppointmentBanner;
+export default HomeAppointmentBanner;

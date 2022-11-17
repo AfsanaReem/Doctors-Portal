@@ -1,5 +1,5 @@
 import React from 'react';
-import bg from '../assets/images/appointment.png';
+import bg from '../../../assets/images/appointment.png';
 const ContactUs = () => {
     return (
         <div className='my-16'>

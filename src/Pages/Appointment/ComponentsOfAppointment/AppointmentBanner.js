@@ -1,10 +1,10 @@
 import React from 'react';
 import chair from '../../../assets/images/chair.png';
 import background from '../../../assets/images/bg.png';
-import Cards from './BannerCard/Cards';
-const Banner = () => {
+
+const AppointmentBanner = () => {
     return (
-        <div>
+        <header>
             <div className="hero min-h-screen" style={{ backgroundImage: `url(${background})` }}>
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <img alt='chair' src={chair} className="lg:w-1/2 rounded-lg shadow-2xl" />
@@ -15,9 +15,8 @@ const Banner = () => {
                     </div>
                 </div>
             </div>
-            <Cards></Cards>
-        </div>
+        </header>
     );
 };
 
-export default Banner;
+export default AppointmentBanner;

@@ -1,8 +1,8 @@
 import React from 'react';
-import imgs from '../../assets/icons/quote.svg';
-import p1 from '../../assets/images/people1.png';
-import p2 from '../../assets/images/people2.png';
-import p3 from '../../assets/images/people3.png';
+import imgs from '../../../../assets/icons/quote.svg';
+import p1 from '../../../../assets/images/people1.png';
+import p2 from '../../../../assets/images/people2.png';
+import p3 from '../../../../assets/images/people3.png';
 import Review from './Review';
 const Testimonial = () => {
     const reviewData = [

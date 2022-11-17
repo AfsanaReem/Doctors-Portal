@@ -1,7 +1,7 @@
 import React from 'react';
-import icon1 from '../../assets/images/cavity.png';
-import icon2 from '../../assets/images/fluoride.png';
-import icon3 from '../../assets/images/whitening.png';
+import icon1 from '../../../../assets/images/cavity.png';
+import icon2 from '../../../../assets/images/fluoride.png';
+import icon3 from '../../../../assets/images/whitening.png';
 import Service from './Service';
 const Services = () => {
     const servicesData = [

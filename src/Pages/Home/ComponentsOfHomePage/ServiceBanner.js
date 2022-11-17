@@ -1,5 +1,5 @@
 import React from 'react';
-import img from '../assets/images/treatment.png';
+import img from '../../../assets/images/treatment.png';
 const ServiceBanner = () => {
     return (
         <div className='md:mx-20 mt-32'>

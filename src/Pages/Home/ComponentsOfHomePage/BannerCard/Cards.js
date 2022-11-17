@@ -1,7 +1,7 @@
 import React from 'react';
-import icon1 from '../../assets/icons/clock.svg'
-import icon2 from '../../assets/icons/marker.svg'
-import icon3 from '../../assets/icons/phone.svg'
+import icon1 from '../../../../assets/icons/clock.svg';
+import icon2 from '../../../../assets/icons/marker.svg';
+import icon3 from '../../../../assets/icons/phone.svg';
 import Card from './Card';
 const Cards = () => {
     const cardData = [

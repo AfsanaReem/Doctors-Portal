@@ -1,33 +1,78 @@
-import React from 'react';
+import { useForm } from "react-hook-form";
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from "../../context/AuthProvider";
+import toast from "react-hot-toast";
 
 const Login = () => {
-    return (
-        <div>
-            <div className="hero min-h-screen ">
-                <div className="hero-content flex-col lg:flex-row-reverse">
+    //react-hook-form
+    const { register, handleSubmit } = useForm();
+    //using auth for firebase login signIn
+    const { loginUser, googleSignIn } = useContext(AuthContext);
+    //navigation to private route from login or sign up page
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+    //set error
+    const [loginError, setLoginError] = useState('');
+    //click handler for login via email and pass
+    const handleLogin = data => {
+        console.log(data);
+        setLoginError('');
+        loginUser(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                toast('Logged In Successfully');
+                navigate(from, { replace: true });
 
-                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <div className="card-body">
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Email</span>
-                                </label>
-                                <input type="text" placeholder="email" className="input input-bordered" />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Password</span>
-                                </label>
-                                <input type="text" placeholder="password" className="input input-bordered" />
-                                <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                                </label>
-                            </div>
-                            <div className="form-control mt-6">
-                                <button className="btn btn-primary">Login</button>
-                            </div>
+            })
+            .catch(error => {
+                setLoginError(error.message)
+            })
+    }
+    //click handler for login via google
+    const handleGoogleLogin = () => {
+        googleSignIn()
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                toast('Logged In Successfully');
+                navigate(from, { replace: true });
+            })
+            .catch(error => { setLoginError(error.message) })
+    }
+    return (
+        <div className='hero'>
+            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div className="card-body">
+                    <h4 className='text-center text-2xl'>Login</h4>
+                    <form onSubmit={handleSubmit(handleLogin)}>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Email</span>
+                            </label>
+                            <input className="input input-bordered" type='email'
+                                {...register("email", { required: true })} />
+                            <label className="label">
+                                <span className="label-text">Password</span>
+                            </label>
+                            <input className="input input-bordered" type='text'
+                                {...register("password", {
+                                    required: true
+                                })} />
+                            {loginError && <p className="text-red-500" role="alert">{loginError}</p>}
+                            <label className="label">
+                                <span className="label-text">Forgot Password?</span>
+                            </label>
                         </div>
-                    </div>
+                        <input className="btn btn-accent w-full mt-5" type="submit" />
+                        <label className="label">
+                            <span className="label-text">New to doctors portal? <Link className='text-secondary' to='/signup'>Create New Account.</Link></span>
+                        </label>
+                        <div className='divider'></div>
+                        <button onClick={handleGoogleLogin} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -1,13 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../context/AuthProvider';
 
 const HeaderNav = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error));
+    }
+
+    const handleTheme = () => {
+
+    }
     const menu = <React.Fragment>
         <li><a href='/'>Home</a></li>
         <li><a href='/'>About</a></li>
         <li><a href='/appointment'>Appointment</a></li>
         <li><a href='/'>Reviews</a></li>
         <li><a href='/'>Contact Us</a></li>
-        <li><a href='/login'>Login</a></li>
+        {user?.uid ?
+            <>
+                <li><a onClick={handleLogOut} href='/'>Log Out</a></li>
+                <li><a href='/dashboard'>Dashboard</a></li>
+            </>
+            :
+            <li><a href='/login'>Login</a></li>}
+        <li className='mt-3'><input type="checkbox" className="toggle" onClick={handleTheme} /></li>
     </React.Fragment>
     return (
         <div>

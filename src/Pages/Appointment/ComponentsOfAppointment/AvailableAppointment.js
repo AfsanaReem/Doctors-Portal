@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 import AppointmentOption from './AppointmentOption';
 import BookingModal from './BookingModal';
 import { useQuery } from '@tanstack/react-query';
+import Loading from '../../../SharedComponents/Loading';
 const AvailableAppointment = ({ selected }) => {
     const date = format(selected, 'PP ')
     // const [appointments, setAppointments] = useState([]);
@@ -17,7 +18,7 @@ const AvailableAppointment = ({ selected }) => {
         }
     });
     if (isLoading) {
-        return (<div className='h-96 flex justify-center items-center'><progress className="progress w-1/2"></progress></div>)
+        return <Loading></Loading>
     }
 
     // useEffect(() => {

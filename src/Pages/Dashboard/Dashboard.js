@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
+import Loading from '../../SharedComponents/Loading';
 
 const Dashboard = () => {
     const { user } = useContext(AuthContext)
-    const { data: bookings = [] } = useQuery({
+    const { data: bookings = [], isLoading } = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/bookings?email=${user.email}`, {
@@ -16,6 +17,9 @@ const Dashboard = () => {
             return data;
         }
     })
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     return (
         <div>
             <h3 className="text-3xl mb-5">My Appointments</h3>
@@ -34,7 +38,7 @@ const Dashboard = () => {
                         </thead>
                         <tbody>
                             {
-                                bookings.map((booking, i) =>
+                                bookings?.map((booking, i) =>
                                     <tr className="hover" key={i}>
                                         <th>{i + 1}</th>
                                         <td>{booking.patientName}</td>

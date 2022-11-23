@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import React, { useContext, useState } from 'react';
 import { AuthContext } from "../../context/AuthProvider";
 import toast from "react-hot-toast";
+import useToken from "../../hooks/useToken";
 
 const SignUp = () => {
     //react-hook-form
@@ -13,6 +14,11 @@ const SignUp = () => {
     const [signUpError, setSignUpError] = useState('');
     //navigation to private route from login or sign up page
     const navigate = useNavigate();
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
+    const [token] = useToken(createdUserEmail);
+    if (token) {
+        navigate('/')
+    }
     //click handler for creating user and updating user via email and pass
     const handleSignUp = data => {
         console.log(data);
@@ -27,7 +33,8 @@ const SignUp = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        navigate('/');
+                        saveUser(data.name, data.email)
+
                     })
                     .catch(error => {
                         console.error(error)
@@ -39,6 +46,34 @@ const SignUp = () => {
                 setSignUpError(error.message);
             })
     }
+    //for saved users
+    const saveUser = (name, email) => {
+        const user = { name, email }
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setCreatedUserEmail(email)
+            })
+
+    }
+    //user token
+    // const getUserToken = email => {
+    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data.accessToken) {
+    //                 localStorage.setItem('accessToken', data.accessToken)
+    //                 navigate('/');
+    //             }
+    //         })
+    // }
     //click handler for google login
     const handleGoogleLogin = () => {
         googleSignIn()
